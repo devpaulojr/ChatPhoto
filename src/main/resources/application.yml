@@ -3,4 +3,4 @@ spring:
     name: SpringMongo
   data:
     mongodb:
-      uri: mongodb://localhost:27017/springandmongo
+      uri: mongodb://root:password@localhost:27017/springandmongo?authSource=admin
