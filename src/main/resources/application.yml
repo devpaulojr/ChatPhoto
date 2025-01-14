@@ -1,3 +1,6 @@
 spring:
   application:
     name: SpringMongo
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/springandmongo
