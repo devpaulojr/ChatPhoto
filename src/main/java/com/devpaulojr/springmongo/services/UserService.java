@@ -27,7 +27,7 @@ public class UserService {
     @GetMapping(value = "/{id}")
     public User findById(String id){
         Optional<User> entity = repository.findById(id);
-        return entity.orElseThrow(() -> new ObjectNotFoundException(entity));
+        return entity.orElseThrow(() -> new ObjectNotFoundException("NotFound: Objeto não encontrado!!"));
     }
 
 }

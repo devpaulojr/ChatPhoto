@@ -1,5 +1,6 @@
 package com.devpaulojr.springmongo.controller;
 
+import com.devpaulojr.springmongo.controller.exceptions.ResourceExceptionHandler;
 import com.devpaulojr.springmongo.dto.UserDto;
 import com.devpaulojr.springmongo.model.User;
 import com.devpaulojr.springmongo.services.UserService;

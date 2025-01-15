@@ -18,6 +18,8 @@ public class UserConfiguration implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        userRepository.deleteAll();
+
         var user1 = new User(null,
                 "paulo",
                 "paulo@gmail.com",
