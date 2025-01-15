@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +45,18 @@ public class UserService {
     @DeleteMapping
     public void delete(String id){
         repository.deleteById(id);
+    }
+
+    @PutMapping
+    public User update(String id, User user){
+        User newUser = repository.getReferenceById(id);
+        updateData(newUser, user);
+        return repository.save(newUser);
+    }
+
+    private void updateData(User newUser, User user) {
+        newUser.setName(user.getName());
+        newUser.setEmail(user.getEmail());
+        newUser.setPhone(user.getPhone());
     }
 }

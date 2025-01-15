@@ -50,4 +50,12 @@ public class UserController {
         service.delete(id);
         ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserDto> update(@PathVariable String id, @RequestBody UserDto userDto) {
+        userDto.setId(id);
+        User user = service.insertDto(userDto);
+        user = service.update(id, user);
+        return ResponseEntity.noContent().build();
+    }
 }
