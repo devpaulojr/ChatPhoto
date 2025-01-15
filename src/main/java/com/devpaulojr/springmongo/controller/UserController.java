@@ -44,4 +44,10 @@ public class UserController {
                 .buildAndExpand(user.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
+    @DeleteMapping(value = "/{id}")
+    public void delete(@PathVariable String id){
+        service.delete(id);
+        ResponseEntity.noContent().build();
+    }
 }

@@ -40,4 +40,9 @@ public class UserService {
                 userDto.getPhone(),
                 userDto.getPassword());
     }
+
+    @DeleteMapping
+    public void delete(String id){
+        repository.deleteById(id);
+    }
 }
