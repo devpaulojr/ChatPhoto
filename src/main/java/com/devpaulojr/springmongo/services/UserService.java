@@ -1,5 +1,6 @@
 package com.devpaulojr.springmongo.services;
 
+import com.devpaulojr.springmongo.dto.UserDto;
 import com.devpaulojr.springmongo.model.User;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

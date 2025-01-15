@@ -18,19 +18,23 @@ public class UserConfiguration implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        userRepository.deleteAll();
-
         var user1 = new User(null,
                 "paulo",
-                "paulo@gmail.com");
+                "paulo@gmail.com",
+                "83940028922",
+                "400289");
 
         var user2 = new User(null,
-                "leticia",
-                "letica@gmail.com");
+                "clara",
+                "clara@gmail.com",
+                "8935421247",
+                "880dsd");
 
         var user3 = new User(null,
                 "carlos",
-                "carlos@gmail.com");
+                "carlos@gmail.com",
+                "83976634566",
+                "Carlos124");
 
         userRepository.saveAll(Arrays.asList(user1, user2, user3));
     }
