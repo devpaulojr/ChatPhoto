@@ -6,7 +6,9 @@ import com.devpaulojr.springmongo.repositories.UserRepository;
 import com.devpaulojr.springmongo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,4 +32,12 @@ public class UserService {
         return entity.orElseThrow(() -> new ObjectNotFoundException("NotFound: Objeto não encontrado!!"));
     }
 
+    @PostMapping
+    public User insertDto(UserDto userDto){
+        return new User(userDto.getId(),
+                userDto.getName(),
+                userDto.getEmail(),
+                userDto.getPhone(),
+                userDto.getPassword());
+    }
 }
