@@ -1,7 +1,6 @@
 package com.devpaulojr.springmongo.dto;
 
 import com.devpaulojr.springmongo.model.Post;
-import com.devpaulojr.springmongo.model.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +21,7 @@ public class PostDto implements Serializable {
     private String title;
     private String body;
 
-    private User author;
+    private AuthorDto author;
 
     public PostDto(Post post){
         this.id = post.getId();

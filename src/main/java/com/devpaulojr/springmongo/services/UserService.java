@@ -21,19 +21,17 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    @GetMapping
+
     public List<User> findAll(){
         List<User> userList = new ArrayList<>();
         return repository.findAll();
     }
 
-    @GetMapping(value = "/{id}")
     public User findById(String id){
         Optional<User> entity = repository.findById(id);
         return entity.orElseThrow(() -> new ObjectNotFoundException("NotFound: Objeto não encontrado!!"));
     }
 
-    @PostMapping
     public User insertDto(UserDto userDto){
         return new User(userDto.getId(),
                 userDto.getName(),
@@ -42,12 +40,10 @@ public class UserService {
                 userDto.getPassword());
     }
 
-    @DeleteMapping
     public void delete(String id){
         repository.deleteById(id);
     }
 
-    @PutMapping
     public User update(String id, User user){
         User newUser = repository.getReferenceById(id);
         updateData(newUser, user);

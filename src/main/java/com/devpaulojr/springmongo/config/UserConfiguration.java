@@ -1,5 +1,6 @@
 package com.devpaulojr.springmongo.config;
 
+import com.devpaulojr.springmongo.dto.AuthorDto;
 import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
 import com.devpaulojr.springmongo.repositories.PostRepository;
@@ -27,7 +28,7 @@ public class UserConfiguration implements CommandLineRunner {
         userRepository.deleteAll();
         postRepository.deleteAll();
 
-        var paulo = new User(
+        User paulo = new User(
                 null,
                 "paulo",
                 "paulo@gmail.com",
@@ -48,12 +49,22 @@ public class UserConfiguration implements CommandLineRunner {
                 "83976634566",
                 "Carlos124");
 
+        userRepository.saveAll(Arrays.asList(paulo, clara, carlos));
+
+        var authorPaulo = new AuthorDto(
+                paulo
+        );
+
+        var authorCarlos = new AuthorDto(
+                carlos
+        );
+
         var post1 = new Post(
                 null,
                 LocalDate.of(2004, 1, 12),
                 "Cachorros pulando",
                 "Passeando com cachorros alegres",
-                paulo
+                authorPaulo
         );
 
 
@@ -62,7 +73,7 @@ public class UserConfiguration implements CommandLineRunner {
                  LocalDate.now(),
                 "Foto família",
                 "Foto com a galera, geral!!",
-                carlos
+                authorCarlos
         );
 
         var post3 = new Post(
@@ -70,10 +81,9 @@ public class UserConfiguration implements CommandLineRunner {
                 LocalDate.of(2012, 7,7),
                 "+1 foto de cachorro",
                 "Novamente passeando com cachorros alegres",
-                paulo
+                authorPaulo
         );
 
-        userRepository.saveAll(Arrays.asList(paulo, clara, carlos));
         postRepository.saveAll(Arrays.asList(post1, post2, post3));
     }
 }

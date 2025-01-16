@@ -1,5 +1,6 @@
 package com.devpaulojr.springmongo.model;
 
+import com.devpaulojr.springmongo.dto.AuthorDto;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -22,6 +23,6 @@ public class Post implements Serializable {
     private String title;
     private String body;
 
-    private User author;
+    private AuthorDto author;
 
 }
