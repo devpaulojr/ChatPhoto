@@ -1,10 +1,9 @@
 package com.devpaulojr.springmongo.config;
 
 import com.devpaulojr.springmongo.dto.AuthorDto;
-import com.devpaulojr.springmongo.model.Comment;
+import com.devpaulojr.springmongo.dto.CommentDto;
 import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
-import com.devpaulojr.springmongo.repositories.CommentRepository;
 import com.devpaulojr.springmongo.repositories.PostRepository;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,16 +23,11 @@ public class UserConfiguration implements CommandLineRunner {
     @Autowired
     private PostRepository postRepository;
 
-    @Autowired
-    private CommentRepository commentRepository;
-
-
     @Override
     public void run(String... args) throws Exception {
 
         userRepository.deleteAll();
         postRepository.deleteAll();
-        commentRepository.deleteAll();
 
         User paulo = new User(
                 null,
@@ -41,7 +35,7 @@ public class UserConfiguration implements CommandLineRunner {
                 "paulo@gmail.com",
                 "83940028922",
                 "400289"
-                );
+        );
 
         var clara = new User(
                 null,
@@ -59,29 +53,22 @@ public class UserConfiguration implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(paulo, clara, carlos));
 
-        var authorPaulo = new AuthorDto(
-                paulo
-        );
-
-        var authorCarlos = new AuthorDto(
-                carlos
-        );
 
         var post1 = new Post(
                 null,
                 LocalDate.of(2004, 1, 12),
                 "Cachorros pulando",
                 "Passeando com cachorros alegres",
-                authorPaulo
+                new AuthorDto(paulo)
         );
 
 
         var post2 = new Post(
                 null,
-                 LocalDate.now(),
+                LocalDate.now(),
                 "Foto família",
                 "Foto com a galera, geral!!",
-                authorCarlos
+                new AuthorDto(carlos)
         );
 
         var post3 = new Post(
@@ -89,40 +76,34 @@ public class UserConfiguration implements CommandLineRunner {
                 LocalDate.of(2012, 7,7),
                 "+1 foto de cachorro",
                 "Novamente passeando com cachorros alegres",
-                authorPaulo
+                new AuthorDto(paulo)
         );
+
+        var commentDto1 = new CommentDto(
+                "Que lindo cachorro!!",
+                LocalDate.now(),
+                new AuthorDto(clara));
+
+        var commentDto2 = new CommentDto(
+                "Aproveite!!",
+                LocalDate.now(),
+                new AuthorDto(paulo));
+
+        var commentDto3 = new CommentDto(
+                "Quanto cachorro kkk",
+                LocalDate.now(),
+                new AuthorDto(clara));
+
+        post1.getComments().add(commentDto1);
+        post2.getComments().add(commentDto2);
+        post3.getComments().add(commentDto3);
 
         postRepository.saveAll(Arrays.asList(post1, post2, post3));
-
-
-        Comment comment1 = new Comment(
-                null,
-                "que lindo cachorro!!",
-                LocalDate.now(),
-                post1
-                );
-
-        Comment comment2 = new Comment(
-                null,
-                "Galera da pesada!!",
-                LocalDate.now(),
-                post2
-        );
-
-        Comment comment3 = new Comment(
-                null,
-                "que lindo!!!",
-                LocalDate.now(),
-                post1
-        );
-
-        commentRepository.saveAll(Arrays.asList(comment1, comment2, comment3));
 
         paulo.getPosts().addAll(Arrays.asList(post1, post3));
         carlos.getPosts().add(post2);
 
         userRepository.save(paulo);
         userRepository.save(carlos);
-
     }
 }
