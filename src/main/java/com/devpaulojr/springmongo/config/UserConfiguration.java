@@ -1,8 +1,10 @@
 package com.devpaulojr.springmongo.config;
 
 import com.devpaulojr.springmongo.dto.AuthorDto;
+import com.devpaulojr.springmongo.model.Comment;
 import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
+import com.devpaulojr.springmongo.repositories.CommentRepository;
 import com.devpaulojr.springmongo.repositories.PostRepository;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +24,16 @@ public class UserConfiguration implements CommandLineRunner {
     @Autowired
     private PostRepository postRepository;
 
+    @Autowired
+    private CommentRepository commentRepository;
+
 
     @Override
     public void run(String... args) throws Exception {
 
         userRepository.deleteAll();
         postRepository.deleteAll();
+        commentRepository.deleteAll();
 
         User paulo = new User(
                 null,
@@ -87,6 +93,30 @@ public class UserConfiguration implements CommandLineRunner {
         );
 
         postRepository.saveAll(Arrays.asList(post1, post2, post3));
+
+
+        Comment comment1 = new Comment(
+                null,
+                "que lindo cachorro!!",
+                LocalDate.now(),
+                post1
+                );
+
+        Comment comment2 = new Comment(
+                null,
+                "Galera da pesada!!",
+                LocalDate.now(),
+                post2
+        );
+
+        Comment comment3 = new Comment(
+                null,
+                "que lindo!!!",
+                LocalDate.now(),
+                post1
+        );
+
+        commentRepository.saveAll(Arrays.asList(comment1, comment2, comment3));
 
         paulo.getPosts().addAll(Arrays.asList(post1, post3));
         carlos.getPosts().add(post2);
