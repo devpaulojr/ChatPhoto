@@ -26,11 +26,10 @@ public class PostController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<PostDto> findById(@PathVariable String id){
         Post post = service.findById(id);
-        PostDto postDto = new PostDto(post);
-        return ResponseEntity.ok().body(postDto);
+        return ResponseEntity.ok().body(new PostDto(post));
     }
 
-    @GetMapping(value = "/{find}/{id}")
+    @GetMapping(value = "/find/{id}")
     public ResponseEntity<List<PostDto>> getPostsByAuthorId(@PathVariable String id){
         List<Post> listPost = service.findByIdUser(id);
         List<PostDto> postDtoList = listPost.stream().map(PostDto::new).toList();

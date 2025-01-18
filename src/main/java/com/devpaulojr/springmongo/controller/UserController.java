@@ -38,8 +38,7 @@ public class UserController {
     @GetMapping(value = "/{id}")
     public ResponseEntity<UserDto> findById(@PathVariable String id){
         var entity = service.findById(id);
-        var userDto = new UserDto(entity);
-        return ResponseEntity.ok().body(userDto);
+        return ResponseEntity.ok().body(new UserDto(entity));
     }
 
     @GetMapping(value = "/{id}/posts")
