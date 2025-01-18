@@ -1,8 +1,10 @@
 package com.devpaulojr.springmongo.services;
 
+import com.devpaulojr.springmongo.dto.PostDto;
 import com.devpaulojr.springmongo.dto.UserDto;
 import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
+import com.devpaulojr.springmongo.repositories.PostRepository;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import com.devpaulojr.springmongo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class UserService {
 
     @Autowired
     private UserRepository repository;
+
+    @Autowired
+    private PostRepository postRepository;
 
 
     public List<User> findAll(){

@@ -4,6 +4,7 @@ import com.devpaulojr.springmongo.dto.PostDto;
 import com.devpaulojr.springmongo.dto.UserDto;
 import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
+import com.devpaulojr.springmongo.repositories.PostRepository;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import com.devpaulojr.springmongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class UserController {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private PostRepository postRepository;
+
     @GetMapping
     public ResponseEntity<List<UserDto>> findAll(){
         List<User> list = service.findAll();
@@ -37,6 +41,13 @@ public class UserController {
         var userDto = new UserDto(entity);
         return ResponseEntity.ok().body(userDto);
     }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+        var entity = service.findById(id);
+        return ResponseEntity.ok().body(entity.getPosts());
+    }
+
 
     @PostMapping
     public ResponseEntity<Void> insert(@RequestBody UserDto userDto){
