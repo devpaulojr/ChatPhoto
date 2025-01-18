@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class UserConfiguration implements CommandLineRunner {
@@ -33,7 +34,8 @@ public class UserConfiguration implements CommandLineRunner {
                 "paulo",
                 "paulo@gmail.com",
                 "83940028922",
-                "400289");
+                "400289"
+                );
 
         var clara = new User(
                 null,
@@ -85,5 +87,12 @@ public class UserConfiguration implements CommandLineRunner {
         );
 
         postRepository.saveAll(Arrays.asList(post1, post2, post3));
+
+        paulo.getPosts().addAll(Arrays.asList(post1, post3));
+        carlos.getPosts().add(post2);
+
+        userRepository.save(paulo);
+        userRepository.save(carlos);
+
     }
 }

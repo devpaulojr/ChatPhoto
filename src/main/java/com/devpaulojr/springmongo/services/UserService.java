@@ -1,15 +1,12 @@
 package com.devpaulojr.springmongo.services;
 
 import com.devpaulojr.springmongo.dto.UserDto;
+import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import com.devpaulojr.springmongo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.ArrayList;
 import java.util.List;

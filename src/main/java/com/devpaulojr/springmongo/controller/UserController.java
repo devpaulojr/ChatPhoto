@@ -1,6 +1,8 @@
 package com.devpaulojr.springmongo.controller;
 
+import com.devpaulojr.springmongo.dto.PostDto;
 import com.devpaulojr.springmongo.dto.UserDto;
+import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.model.User;
 import com.devpaulojr.springmongo.repositories.UserRepository;
 import com.devpaulojr.springmongo.services.UserService;
