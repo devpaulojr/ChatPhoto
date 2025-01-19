@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,6 +22,13 @@ public class CommentController {
     @GetMapping
     public ResponseEntity<List<CommentDto>> findAll(){
         List<Comment> entity = service.findAll();
+        List<CommentDto> dtoList = entity.stream().map(CommentDto::new).toList();
+        return ResponseEntity.ok().body(dtoList);
+    }
+
+    @GetMapping(value = "/find")
+    public ResponseEntity<List<CommentDto>> findByText(@RequestParam("text") String text){
+        List<Comment> entity = service.findByText(text);
         List<CommentDto> dtoList = entity.stream().map(CommentDto::new).toList();
         return ResponseEntity.ok().body(dtoList);
     }
