@@ -1,5 +1,6 @@
 package com.devpaulojr.springmongo.controller;
 
+import com.devpaulojr.springmongo.controller.util.UrlDecoder;
 import com.devpaulojr.springmongo.dto.CommentDto;
 import com.devpaulojr.springmongo.model.Comment;
 import com.devpaulojr.springmongo.services.CommentService;
@@ -28,6 +29,7 @@ public class CommentController {
 
     @GetMapping(value = "/find")
     public ResponseEntity<List<CommentDto>> findByText(@RequestParam("text") String text){
+        text = UrlDecoder.decodeParam(text);
         List<Comment> entity = service.findByText(text);
         List<CommentDto> dtoList = entity.stream().map(CommentDto::new).toList();
         return ResponseEntity.ok().body(dtoList);

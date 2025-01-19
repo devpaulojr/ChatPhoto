@@ -1,5 +1,6 @@
 package com.devpaulojr.springmongo.controller;
 
+import com.devpaulojr.springmongo.controller.util.UrlDecoder;
 import com.devpaulojr.springmongo.dto.PostDto;
 import com.devpaulojr.springmongo.model.Post;
 import com.devpaulojr.springmongo.services.PostService;
@@ -31,6 +32,7 @@ public class PostController {
 
     @GetMapping(value = "/find/title")
     public ResponseEntity<List<PostDto>> findByTitle(@RequestParam String title){
+        title = UrlDecoder.decodeParam(title);
         List<Post> entity = service.findByTitle(title);
         List<PostDto> dtoList = entity.stream().map(PostDto::new).toList();
         return ResponseEntity.ok().body(dtoList);

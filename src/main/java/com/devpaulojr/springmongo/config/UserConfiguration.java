@@ -41,7 +41,7 @@ public class UserConfiguration implements CommandLineRunner {
 
         User paulo = new User(
                 null,
-                "paulo",
+                "paulo santana",
                 "paulo@gmail.com",
                 "83940028922",
                 "400289"
@@ -49,14 +49,14 @@ public class UserConfiguration implements CommandLineRunner {
 
         var clara = new User(
                 null,
-                "clara",
+                "clara gomes",
                 "clara@gmail.com",
                 "8935421247",
                 "880dsd");
 
         var carlos = new User(
                 null,
-                "carlos",
+                "carlos andrade",
                 "carlos@gmail.com",
                 "83976634566",
                 "Carlos124");
