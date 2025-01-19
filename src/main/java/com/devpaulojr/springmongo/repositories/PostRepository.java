@@ -12,4 +12,6 @@ public interface PostRepository extends MongoRepository<Post, String> {
 
     List<Post> findByAuthorId(String nameAuthor);
 
+    List<Post> findByTitleContainingIgnoreCase(String title);
+
 }

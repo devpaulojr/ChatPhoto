@@ -8,6 +8,7 @@ import com.devpaulojr.springmongo.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,10 @@ public class PostService {
     public Post findById(@PathVariable String id){
         Optional<Post> postList = postRepository.findById(id);
         return postList.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!!"));
+    }
+
+    public List<Post> findByTitle(@RequestParam("title") String title){
+        return postRepository.findByTitleContainingIgnoreCase(title);
     }
 
     public List<Post> findByIdUser(@PathVariable String id){
