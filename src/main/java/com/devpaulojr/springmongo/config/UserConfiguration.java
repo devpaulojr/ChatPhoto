@@ -1,7 +1,6 @@
 package com.devpaulojr.springmongo.config;
 
 import com.devpaulojr.springmongo.dto.AuthorDto;
-import com.devpaulojr.springmongo.dto.CommentDto;
 import com.devpaulojr.springmongo.dto.PostDto;
 import com.devpaulojr.springmongo.model.Comment;
 import com.devpaulojr.springmongo.model.Post;
@@ -15,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 @Configuration
@@ -58,7 +56,7 @@ public class UserConfiguration implements CommandLineRunner {
                 null,
                 "carlos andrade",
                 "carlos@gmail.com",
-                "83976634566",
+                "8397663456",
                 "Carlos124");
 
         userRepository.saveAll(Arrays.asList(paulo, clara, carlos));
@@ -103,7 +101,7 @@ public class UserConfiguration implements CommandLineRunner {
         var comment2 = new Comment(
                 null,
                 "galera da pesada",
-                LocalDate.now(),
+                LocalDate.of(2025, 10, 12),
                 random.nextInt(),
                 new PostDto(post2),
                 new AuthorDto(paulo)

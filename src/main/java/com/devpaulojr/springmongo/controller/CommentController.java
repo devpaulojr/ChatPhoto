@@ -27,8 +27,8 @@ public class CommentController {
         return ResponseEntity.ok().body(dtoList);
     }
 
-    @GetMapping(value = "/find")
-    public ResponseEntity<List<CommentDto>> findByText(@RequestParam("text") String text){
+    @GetMapping(value = "/text")
+    public ResponseEntity<List<CommentDto>> findByText(@RequestParam String text){
         text = UrlDecoder.decodeParam(text);
         List<Comment> entity = service.findByText(text);
         List<CommentDto> dtoList = entity.stream().map(CommentDto::new).toList();

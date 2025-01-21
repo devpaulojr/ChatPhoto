@@ -18,7 +18,7 @@ public class CommentService {
         return repository.findAll();
     }
 
-    public List<Comment> findByText(@RequestParam("text") String text){
+    public List<Comment> findByText(@RequestParam String text){
         return repository.findByTextContainingIgnoreCase(text);
     }
 }

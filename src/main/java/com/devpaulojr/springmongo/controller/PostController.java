@@ -38,7 +38,7 @@ public class PostController {
         return ResponseEntity.ok().body(dtoList);
     }
 
-    @GetMapping(value = "/find/{id}")
+    @GetMapping(value = "/users/{id}")
     public ResponseEntity<List<PostDto>> getPostsByAuthorId(@PathVariable String id){
         List<Post> listPost = service.findByIdUser(id);
         List<PostDto> postDtoList = listPost.stream().map(PostDto::new).toList();
