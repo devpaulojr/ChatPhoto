@@ -17,15 +17,17 @@ Vamos começar com a lista de
 pré-requisito
 
 <h3>Requisito</h3>
+
 - [docker desktop](https://www.docker.com/get-started/)
 
 <h2>Tabela de conteúdos</h2>
-- [Clonar o projeto](#Clonar o projeto)
+
+- [Clonar o projeto](#Clonar-o-projeto)
 - [application.yml](#application.yml)
   - [docker-compose.yml](#docker-compose.yml)
 - [Arquitetura](#Arquitetura)
     - [Features](#Features)
-- [API Endpoints](#API Endpoints)
+- [API Endpoints](#API-Endpoints)
     - [User](#User)
     - [Post](#Post)
     - [Comment](#Comment)
@@ -109,7 +111,9 @@ Você deverá instanciar os objetos em memória da seguinte forma:
 <h2>User</h2>
 
 <h3>GET / users</h3>
+
 **localhost:8080/users**
+
 ```json
 [
   {
@@ -136,6 +140,7 @@ Você deverá instanciar os objetos em memória da seguinte forma:
 <h2>Post</h2>
 
 <h3>GET / posts</h3>
+
 **localhost:8080/posts**
 
 ```json
@@ -177,6 +182,7 @@ Você deverá instanciar os objetos em memória da seguinte forma:
 ```
 
 <h3>GET / getPostsByAuthorId</h3>
+
 **localhost:8080/posts/author/{id}**
 
 ```json
@@ -209,6 +215,7 @@ Você deverá instanciar os objetos em memória da seguinte forma:
 <h2>Comment</h2>
 
 <h3>GET / comments</h3>
+
 **localhost:8080/comments**
 
 ```json
