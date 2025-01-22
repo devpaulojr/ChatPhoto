@@ -23,8 +23,8 @@ pré-requisito
 <h2>Tabela de conteúdos</h2>
 
 - [Clonar o projeto](#Clonar-o-projeto)
-- [application.yml](#application.yml)
-  - [docker-compose.yml](#docker-compose.yml)
+- [application.yml](#applicationyml)
+  - [docker-compose.yml](#docker-composeyml)
 - [Arquitetura](#Arquitetura)
     - [Features](#Features)
 - [API Endpoints](#API-Endpoints)
